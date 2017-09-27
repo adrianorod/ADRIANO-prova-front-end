@@ -1,0 +1,14 @@
+body {
+  background: url('../img/background-lateral.png') top left no-repeat,
+    url('../img/background.png') top left repeat-x;
+}
+
+#container {
+  width: 737px;
+  margin: 0 auto 0 auto;
+}
+
+.row {
+  width: 100%;
+  clear: both;
+}
