@@ -28,11 +28,13 @@ gulp.task('sass-compile', function() {
 
 gulp.task('js-concat', function() {
   return gulp.src([
+    'dev/js/vendors/jquery.js',
     'dev/js/vendors/angular.js',
     'dev/js/vendors/angular-route.js',
     'dev/js/app.js',
     'dev/js/controllers/home-controller.js',
-    'dev/js/directives/menu-simulados.js'
+    'dev/js/directives/menu-simulados.js',
+//    'dev/js/components/altera-tamanho-fonte.js'
   ])
     .pipe(concat('main.js'))
 //    .pipe(minifyJs({ mangle: false }))
