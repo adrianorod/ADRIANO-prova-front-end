@@ -1,6 +1,12 @@
 body {
   background: url('../img/background-lateral.png') top left no-repeat,
     url('../img/background.png') top left repeat-x;
+  font-family: Arial;
+  font-size: 0.7em;
+}
+
+h2 {
+  text-transform: uppercase;
 }
 
 #container {

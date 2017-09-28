@@ -34,7 +34,7 @@ gulp.task('js-concat', function() {
     'dev/js/controllers/home-controller.js'
   ])
     .pipe(concat('main.js'))
-    .pipe(minifyJs({ mangle: false }))
+//    .pipe(minifyJs({ mangle: false }))
     .pipe(gulp.dest('dev/'));
 });
 
@@ -49,4 +49,5 @@ gulp.task('server', ['sass-compile', 'js-concat'], function() {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass-compile']).on('change', browserSync.reload);
   gulp.watch(paths.js, ['js-concat']).on('change', browserSync.reload);
+  gulp.watch(paths.html).on('change', browserSync.reload);
 });

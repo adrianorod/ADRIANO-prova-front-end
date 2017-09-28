@@ -1,3 +1,24 @@
-<div class="row">
-  <span class="aumentaFonte">A+</span>&nbsp;<span class="diminuiFonte">A-</span>
+<div class="row alteraFonte">
+  <a href="#">A+</a>&nbsp;<a href="#">A-</a>
+</div>
+<div class="menuSimulado">
+  <p>Simulados de 2008</p>
+  <ul>
+    <li ng-repeat="simulado in vm.simulado" ng-class="vm.itemSimuladoVisivel==simulado.IdSimulado ? 'alteraListType' : ''">
+      <a href="" ng-click="vm.alteraSimuladoVisivel(simulado.IdSimulado)">{{simulado.NomeSimulado}}</a>
+      <ul ng-show="vm.itemSimuladoVisivel == simulado.IdSimulado">
+        <li><a href="" ng-click="vm.provaObjetivaFinal(1, simulado.NomeSimulado)">prova objetiva</a></li>
+        <li><a href="" ng-click="vm.provaObjetivaFinal(2, simulado.NomeSimulado)">prova final</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="principalDireita">
+  <h2>{{vm.nomeSimuladoAtivo}} - {{vm.nomeProvaObjetivaFinal}}</h2>
+  <p>
+    Os resultados do simulado são atualizados diariamente, na medida em que os cartões-resposta e as provas discursivas vão sendo são processados.
+  </p>
+  <p>
+    Através dos filtros, você poderá criar rankings personalizados por ESPECIALIDADE, TURMA (curso) e UNIDADE (cidade).
+  </p>
 </div>
