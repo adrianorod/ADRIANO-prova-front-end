@@ -31,7 +31,8 @@ gulp.task('js-concat', function() {
     'dev/js/vendors/angular.js',
     'dev/js/vendors/angular-route.js',
     'dev/js/app.js',
-    'dev/js/controllers/home-controller.js'
+    'dev/js/controllers/home-controller.js',
+    'dev/js/directives/menu-simulados.js'
   ])
     .pipe(concat('main.js'))
 //    .pipe(minifyJs({ mangle: false }))

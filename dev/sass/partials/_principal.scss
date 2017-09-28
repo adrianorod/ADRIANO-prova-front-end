@@ -3,43 +3,33 @@
   margin: 0 auto 0 auto;
 }
 
-.alteraFonte {
-  a {
-    padding: 2px;
-    color: #fff;
-    background-color: #444;
-    text-decoration: none;
-  }
-}
-
-.menuSimulado {
-  width: 160px;
-  float: left;
-  li {
-    list-style-type: disclosure-closed;
-    margin-left: -20px;
-    padding: 0;
-    border: 0;
-    li {
-      list-style-type: none;
-    }
-  }
-  a {
-    color: #555;
-    text-decoration: none;
-    &:hover {
-      color: #000;
-    }
-  }
-  p {
-    font-weight: bold;
-  }
-  .alteraListType {
-    list-style-type: disclosure-open;
+#ranking {
+  width: 100%;
+  clear: both;
+  text-align: center;
+  thead {
+    background-color: #ddd;
+    text-transform: uppercase;
   }
 }
 
 .principalDireita {
   width: 491px;
   float: right;
+  select {
+    width: 32.9%;
+    margin: auto;
+  }
+  .buscar {
+    background-color: #ecf1f9;
+    font-weight: bold;
+    padding: 10px 5px 10px 5px;
+    button {
+      background-color: $cor3;
+      color: $cor2;
+      padding: 3px;
+      margin: 2px;
+      border: 0;
+    }
+  }
 }

@@ -1,0 +1,58 @@
+[
+  {
+    "Nota": 40,
+    "Matricula": 489556,
+    "Especialidade": "CLÍNICA MÉDICA",
+    "Turma": "2008 MEDCURSO SALVADOR",
+    "Filial": "Salvador (BA)"
+  },
+  {
+    "Nota": 26,
+    "Matricula": 798653,
+    "Especialidade": "CIRURGIA GERAL",
+    "Turma": "2008 MEDCURSO SÃO PAULO",
+    "Filial": "São Paulo (SP)"
+  },
+  {
+    "Nota": 40,
+    "Matricula": 654321,
+    "Especialidade": "CLÍNICA MÉDICA",
+    "Turma": "2008 MEDCURSO SÃO PAULO",
+    "Filial": "São Paulo (SP)"
+  },
+  {
+    "Nota": 38,
+    "Matricula": 634795,
+    "Especialidade": "CIRURGIA GERAL",
+    "Turma": "2008 MEDCURSO SALVADOR",
+    "Filial": "Salvador (BA)"
+  },
+  {
+    "Nota": 38,
+    "Matricula": 798653,
+    "Especialidade": "CIRURGIA GERAL",
+    "Turma": "2008 MEDCURSO SÃO PAULO",
+    "Filial": "São Paulo (SP)"
+  },
+  {
+    "Nota": 35,
+    "Matricula": 968351,
+    "Especialidade": "CIRURGIA GERAL",
+    "Turma": "2008 MEDCURSO SALVADOR",
+    "Filial": "Salvador (BA)"
+  },
+  {
+    "Nota": 36,
+    "Matricula": 634598,
+    "Especialidade": "CLÍNICA MÉDICA",
+    "Turma": "2008 MEDCURSO SALVADOR",
+    "Filial": "Salvador (BA)"
+  },
+  {
+    "Nota": 37,
+    "Matricula": 463012,
+    "Especialidade": "CLÍNICA MÉDICA",
+    "Turma": "2008 MEDCURSO SÃO PAULO",
+    "Filial": "São Paulo (SP)"
+  }
+]

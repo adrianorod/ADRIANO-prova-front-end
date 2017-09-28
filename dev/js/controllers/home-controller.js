@@ -13,6 +13,7 @@
     vm.itemSimuladoVisivel = "";
     vm.nomeSimuladoAtivo = "";
     vm.nomeProvaObjetivaFinal = "";
+    vm.rankingTotal = null;
 
     vm.alteraSimuladoVisivel = alteraSimuladoVisivel;
     function alteraSimuladoVisivel(IdSimulado) {
@@ -40,6 +41,17 @@
     .error(function(erro) {
       console.log(erro);
     });
+
+    vm.gerarRanking = gerarRanking;
+    function gerarRanking() {
+      $http.get('data/resultados.json')
+      .success(function(retorno) {
+        vm.rankingTotal = retorno;
+      })
+      .error(function(erro) {
+        console.log(erro);
+      });
+    }
 
   }
 })();

@@ -1,19 +1,12 @@
-<div class="row alteraFonte">
+<div class="row alteraTamanhoFonte">
   <a href="#">A+</a>&nbsp;<a href="#">A-</a>
 </div>
 <div class="menuSimulado">
   <p>Simulados de 2008</p>
-  <ul>
-    <li ng-repeat="simulado in vm.simulado" ng-class="vm.itemSimuladoVisivel==simulado.IdSimulado ? 'alteraListType' : ''">
-      <a href="" ng-click="vm.alteraSimuladoVisivel(simulado.IdSimulado)">{{simulado.NomeSimulado}}</a>
-      <ul ng-show="vm.itemSimuladoVisivel == simulado.IdSimulado">
-        <li><a href="" ng-click="vm.provaObjetivaFinal(1, simulado.NomeSimulado)">prova objetiva</a></li>
-        <li><a href="" ng-click="vm.provaObjetivaFinal(2, simulado.NomeSimulado)">prova final</a></li>
-      </ul>
-    </li>
-  </ul>
+  <menu-simulados></menu-simulados>
 </div>
-<div class="principalDireita">
+<div class="principalDireita" ng-show="vm.nomeSimuladoAtivo == ''">SELECIONE O SIMULADO DESEJADO NO MENU AO LADO</div>
+<div class="principalDireita" ng-show="vm.nomeSimuladoAtivo != ''">
   <h2>{{vm.nomeSimuladoAtivo}} - {{vm.nomeProvaObjetivaFinal}}</h2>
   <p>
     Os resultados do simulado são atualizados diariamente, na medida em que os cartões-resposta e as provas discursivas vão sendo são processados.
@@ -21,4 +14,47 @@
   <p>
     Através dos filtros, você poderá criar rankings personalizados por ESPECIALIDADE, TURMA (curso) e UNIDADE (cidade).
   </p>
+  <div class="buscar">
+    Entre com sua matrícula: <input type="text"/><button type="button" ng-click="vm.gerarRanking()">procurar</button>
+  </div>
+  <br/>
+  Filtrar por:
+  <br/>
+  <select ng-model="vm.filtrarEspecialidade">
+    <option value="">Especialidade - TODAS</option>
+    <option value="CLÍNICA MÉDICA">CLÍNICA MÉDICA</option>
+    <option value="CIRURGIA GERAL">CIRURGIA GERAL</option>
+  </select>
+  <select ng-model="vm.filtrarFilial">
+    <option value="">Filiais - TODAS</option>
+    <option value="São Paulo (SP)">São Paulo (SP)</option>
+    <option value="Salvador (BA)">Salvador (BA)</option>
+  </select>
+  <select ng-model="vm.filtrarTurma">
+    <option value="">Turmas - TODAS</option>
+    <option value="2008 MEDCURSO SÃO PAULO">2008 MEDCURSO SÃO PAULO</option>
+    <option value="2008 MEDCURSO SALVADOR">2008 MEDCURSO SALVADOR</option>
+  </select>
 </div>
+<table id="ranking" ng-show="vm.rankingTotal != null">
+  <thead>
+    <tr>
+      <th>Posição</th>
+      <th>Nota</th>
+      <th>Matrícula</th>
+      <th>Especialidade</th>
+      <th>Turma</th>
+      <th>Filial</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="r in vm.rankingTotal | filter:vm.filtrarEspecialidade | filter:vm.filtrarTurma | filter:vm.filtrarFilial">
+      <td>1°</td>
+      <td>{{r.Nota}}</td>
+      <td>{{r.Matricula}}</td>
+      <td>{{r.Especialidade}}</td>
+      <td>{{r.Turma}}</td>
+      <td>{{r.Filial}}</td>
+    </tr>
+  </tbody>
+</table>

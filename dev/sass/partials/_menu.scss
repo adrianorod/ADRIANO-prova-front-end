@@ -1,0 +1,26 @@
+.menuSimulado {
+  width: 160px;
+  float: left;
+  li {
+    list-style-type: disclosure-closed;
+    margin-left: -20px;
+    padding: 0;
+    border: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+  a {
+    color: $cor3;
+    text-decoration: none;
+    &:hover {
+      color: $cor1;
+    }
+  }
+  p {
+    font-weight: bold;
+  }
+  .alteraListType {
+    list-style-type: disclosure-open;
+  }
+}

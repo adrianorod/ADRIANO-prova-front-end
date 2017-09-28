@@ -266,7 +266,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
   'use strict';
 
   angular
-    .module('provaAdriano', ['ngRoute'])
+    .module('provaAdriano', ['ngRoute', 'menuSimuladosDirective'])
     .config(function($routeProvider, $locationProvider) {
 
       $routeProvider.when('/',{
@@ -295,6 +295,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
     vm.itemSimuladoVisivel = "";
     vm.nomeSimuladoAtivo = "";
     vm.nomeProvaObjetivaFinal = "";
+    vm.rankingTotal = null;
 
     vm.alteraSimuladoVisivel = alteraSimuladoVisivel;
     function alteraSimuladoVisivel(IdSimulado) {
@@ -323,5 +324,31 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
       console.log(erro);
     });
 
+    vm.gerarRanking = gerarRanking;
+    function gerarRanking() {
+      $http.get('data/resultados.json')
+      .success(function(retorno) {
+        vm.rankingTotal = retorno;
+      })
+      .error(function(erro) {
+        console.log(erro);
+      });
+    }
+
+  }
+})();
+
+(function() {
+  'use strict';
+
+    angular
+      .module('menuSimuladosDirective', [])
+      .directive('menuSimulados', menuSimulados);
+
+      function menuSimulados() {
+
+        return {
+          templateUrl: '/js/directives/menu-simulados.html'
+        };
   }
 })();
