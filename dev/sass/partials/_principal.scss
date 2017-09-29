@@ -1,6 +1,9 @@
 #principal {
   width: 651px;
   margin: 0 auto 0 auto;
+  @media #{$mq} {
+    width: 100%;
+  }
 }
 
 .principalDireita {
@@ -22,5 +25,9 @@
       margin: 2px;
       border: 0;
     }
+  }
+  @media #{$mq} {
+    width: 100%;
+    float: inherit;
   }
 }

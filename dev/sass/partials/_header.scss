@@ -8,9 +8,18 @@
     background: url('../img/simulado-logo.png');
     text-indent: -99999px;
     float: left;
+    @media #{$mq} {
+      float: inherit;
+      margin: 20px auto 0 auto;
+    }
   }
   img {
     float: right;
     margin-bottom: 40px;
+    width: 275px;
+    @media #{$mq} {
+      float: inherit;
+      margin: 0 auto 40px auto;
+    }
   }
 }

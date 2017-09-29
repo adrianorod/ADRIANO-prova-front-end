@@ -21,6 +21,9 @@ a {
 #container {
   width: 737px;
   margin: 0 auto 0 auto;
+  @media #{$mq} {
+    width: 100%;
+  }
 }
 
 .row {

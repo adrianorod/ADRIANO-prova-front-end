@@ -4,17 +4,18 @@ var minifyCss = require('gulp-cssmin');
 var browserSync = require('browser-sync');
 var concat = require('gulp-concat');
 var minifyJs = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
 
 var paths = {
   img: './dev/img/**/*',
   js: './dev/js/**/*.js',
   html: './dev/**/*.html',
-  sass: './dev/sass/**/*'
+  sass: './dev/sass/**/*',
+  json: './dev/**/*.json'
 };
 
 var dests = {
-  img: './dist/img/',
-  html: './dist/'
+  root: './dist/'
 };
 
 gulp.task('default', ['server', 'watch']);
@@ -35,15 +36,29 @@ gulp.task('js-concat', function() {
     'dev/js/controllers/home-controller.js',
     'dev/js/directives/menu-simulados.js',
     'dev/js/directives/barra-paginacao.js',
-    'dev/js/directives/diretiva-ranking.js'
-//    'dev/js/components/altera-tamanho-fonte.js'
+    'dev/js/directives/diretiva-ranking.js',
+    'dev/js/directives/altera-fonte.js'
   ])
     .pipe(concat('main.js'))
-//    .pipe(minifyJs({ mangle: false }))
+    .pipe(minifyJs({ mangle: false }))
     .pipe(gulp.dest('dev/'));
 });
 
-gulp.task('server', ['sass-compile', 'js-concat'], function() {
+gulp.task('copy', ['sass-compile', 'js-concat'], function(done){
+    gulp.src('./dev/main.css').pipe(gulp.dest(dests.root));
+    gulp.src(paths.img).pipe(gulp.dest('./dist/img'));
+    gulp.src('./dev/main.js').pipe(gulp.dest(dests.root));
+    gulp.src(paths.json).pipe(gulp.dest(dests.root));
+    gulp.src(paths.html).pipe(gulp.dest(dests.root)).on('end',done);
+});
+
+gulp.task('img-compress', ['copy'], function() {
+  return gulp.src('./dist/img/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dist/img'));
+});
+
+gulp.task('server', ['img-compress'], function() {
   browserSync.init({
     server: {
       baseDir: 'dev'

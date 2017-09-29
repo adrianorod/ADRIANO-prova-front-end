@@ -16,4 +16,8 @@
   .alteraListType {
     list-style-type: disclosure-open;
   }
+  @media #{$mq} {
+    width: 100%;
+    float: inherit;
+  }
 }

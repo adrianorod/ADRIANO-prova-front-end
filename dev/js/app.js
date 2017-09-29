@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('provaAdriano', ['ngRoute', 'menuSimuladosDirective', 'barraPaginacaoDirective', 'diretivaRankingDirective'])
+    .module('provaAdriano', ['ngRoute', 'menuSimuladosDirective', 'barraPaginacaoDirective', 'diretivaRankingDirective', 'alteraFonteDirective'])
     .config(function($routeProvider, $locationProvider) {
 
       $routeProvider.when('/',{
