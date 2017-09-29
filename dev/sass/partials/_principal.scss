@@ -3,19 +3,10 @@
   margin: 0 auto 0 auto;
 }
 
-#ranking {
-  width: 100%;
-  clear: both;
-  text-align: center;
-  thead {
-    background-color: #ddd;
-    text-transform: uppercase;
-  }
-}
-
 .principalDireita {
   width: 491px;
   float: right;
+  margin-bottom: 40px;
   select {
     width: 32.9%;
     margin: auto;

@@ -3,10 +3,19 @@ body {
     url('../img/background.png') top left repeat-x;
   font-family: Arial;
   font-size: 0.7em;
+  margin-bottom: 30px;
 }
 
 h2 {
   text-transform: uppercase;
+}
+
+a {
+  color: $cor3;
+  text-decoration: none;
+  &:hover {
+    color: $cor1;
+  }
 }
 
 #container {

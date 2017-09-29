@@ -271,7 +271,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
   'use strict';
 
   angular
-    .module('provaAdriano', ['ngRoute', 'menuSimuladosDirective'])
+    .module('provaAdriano', ['ngRoute', 'menuSimuladosDirective', 'barraPaginacaoDirective', 'diretivaRankingDirective'])
     .config(function($routeProvider, $locationProvider) {
 
       $routeProvider.when('/',{
@@ -297,11 +297,15 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
     var vm = this;
 
     vm.simulado = [];
-    vm.itemSimuladoVisivel = "";
-    vm.nomeSimuladoAtivo = "";
-    vm.nomeProvaObjetivaFinal = "";
-    vm.rankingTotal = null;
+    $http.get('data/simulados.json')
+    .success(function(retorno) {
+      vm.simulado = retorno;
+    })
+    .error(function(erro) {
+      console.log(erro);
+    });
 
+    vm.itemSimuladoVisivel = "";
     vm.alteraSimuladoVisivel = alteraSimuladoVisivel;
     function alteraSimuladoVisivel(IdSimulado) {
       if(vm.itemSimuladoVisivel == IdSimulado) {
@@ -311,6 +315,8 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
       }
     }
 
+    vm.nomeSimuladoAtivo = "";
+    vm.nomeProvaObjetivaFinal = "";
     vm.provaObjetivaFinal = provaObjetivaFinal;
     function provaObjetivaFinal(status, nomeSimulado) {
       vm.nomeSimuladoAtivo = nomeSimulado;
@@ -321,14 +327,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
       }
     }
 
-    $http.get('data/simulados.json')
-    .success(function(retorno) {
-      vm.simulado = retorno;
-    })
-    .error(function(erro) {
-      console.log(erro);
-    });
-
+    vm.rankingTotal = null;
     vm.gerarRanking = gerarRanking;
     function gerarRanking() {
       $http.get('data/resultados.json')
@@ -339,6 +338,20 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         console.log(erro);
       });
     }
+
+    vm.subirPagina = subirPagina;
+    function subirPagina() {
+      window.scrollTo(0, 0);
+    }
+
+    vm.visualizarImpressao = false;
+    vm.imprimir = imprimir;
+    function imprimir() {
+      window.print();
+      vm.visualizarImpressao = false;
+    }
+
+    vm.enviarParaUmAmigo = false;
 
   }
 })();
@@ -354,6 +367,36 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
         return {
           templateUrl: '/js/directives/menu-simulados.html'
+        };
+  }
+})();
+
+(function() {
+  'use strict';
+
+    angular
+      .module('barraPaginacaoDirective', [])
+      .directive('barraPaginacao', barraPaginacao);
+
+      function barraPaginacao() {
+
+        return {
+          templateUrl: '/js/directives/barra-paginacao.html'
+        };
+  }
+})();
+
+(function() {
+  'use strict';
+
+    angular
+      .module('diretivaRankingDirective', [])
+      .directive('diretivaRanking', diretivaRanking);
+
+      function diretivaRanking() {
+
+        return {
+          templateUrl: '/js/directives/diretiva-ranking.html'
         };
   }
 })();

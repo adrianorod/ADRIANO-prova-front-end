@@ -34,6 +34,8 @@ gulp.task('js-concat', function() {
     'dev/js/app.js',
     'dev/js/controllers/home-controller.js',
     'dev/js/directives/menu-simulados.js',
+    'dev/js/directives/barra-paginacao.js',
+    'dev/js/directives/diretiva-ranking.js'
 //    'dev/js/components/altera-tamanho-fonte.js'
   ])
     .pipe(concat('main.js'))

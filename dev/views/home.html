@@ -1,10 +1,12 @@
 <div class="row alteraTamanhoFonte">
   <a class="aumentaFonte" onclick="aumentarFonte()" href="">A+</a>&nbsp;<a class="diminuiFonte" onclick="diminuirFonte()" href="">A-</a>
 </div>
+
 <div class="menuSimulado">
   <p>Simulados de 2008</p>
   <menu-simulados></menu-simulados>
 </div>
+
 <div class="principalDireita" ng-show="vm.nomeSimuladoAtivo == ''">SELECIONE O SIMULADO DESEJADO NO MENU AO LADO</div>
 <div class="principalDireita" ng-show="vm.nomeSimuladoAtivo != ''">
   <h2>{{vm.nomeSimuladoAtivo}} - {{vm.nomeProvaObjetivaFinal}}</h2>
@@ -36,25 +38,43 @@
     <option value="2008 MEDCURSO SALVADOR">2008 MEDCURSO SALVADOR</option>
   </select>
 </div>
-<table id="ranking" ng-show="vm.rankingTotal != null">
-  <thead>
-    <tr>
-      <th>Posição</th>
-      <th>Nota</th>
-      <th>Matrícula</th>
-      <th>Especialidade</th>
-      <th>Turma</th>
-      <th>Filial</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="r in vm.rankingTotal | filter:vm.filtrarEspecialidade | filter:vm.filtrarTurma | filter:vm.filtrarFilial">
-      <td>1°</td>
-      <td>{{r.Nota}}</td>
-      <td>{{r.Matricula}}</td>
-      <td>{{r.Especialidade}}</td>
-      <td>{{r.Turma}}</td>
-      <td>{{r.Filial}}</td>
-    </tr>
-  </tbody>
-</table>
+
+<div ng-show="vm.rankingTotal != null">
+
+  <div class="row">
+    <span class="barraImprimirEsq">
+      <a href="" ng-click="vm.visualizarImpressao = true">imprimir</a> | <a href="" ng-click="vm.enviarParaUmAmigo = true">enviar para um amigo</a>
+    </span>
+    <span class="barraImprimirDir">
+      foram encontrados {{}} registros
+    </span>
+  </div>
+  <barra-paginacao></barra-paginacao>
+
+  <diretiva-ranking></diretiva-ranking>
+
+  <barra-paginacao></barra-paginacao>
+  <div class="row">
+    <span class="barraImprimirEsq">
+      <a href="" ng-click="vm.visualizarImpressao = true">imprimir</a> | <a href="" ng-click="vm.enviarParaUmAmigo = true">enviar para um amigo</a>
+    </span>
+    <span class="barraImprimirDir">
+      <a href="" ng-click="vm.subirPagina()"><span class="material-icons">arrow_drop_up</span> topo</a>
+    </span>
+  </div>
+
+  <div class="lightbox" id="imprimir" ng-show="vm.visualizarImpressao">
+    <div class="lightboxInside">
+      <a href="" ng-click="vm.imprimir()">imprimir</a> | <a href="" ng-click="vm.visualizarImpressao = false">fechar</a>
+      <diretiva-ranking></diretiva-ranking>
+    </div>
+  </div>
+
+  <div class="lightbox" ng-show="vm.enviarParaUmAmigo">
+    <div class="lightboxInside">
+      <p><a href="" ng-click="vm.enviarParaUmAmigo = false">fechar</a></p>
+      <p>Hello World!</p>
+    </div>
+  </div>
+
+</div>

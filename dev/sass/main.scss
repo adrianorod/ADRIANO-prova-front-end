@@ -4,15 +4,19 @@
   'utils/variables';
 
 @import
-  'vendors/normalize';
+  'vendors/normalize',
+  'vendors/materialIcons';
 
 @import
-  'base/base';
+  'base/base',
+  'base/print';
 
 @import
   'partials/header',
   'partials/principal',
-  'partials/menu';
+  'partials/menu',
+  'partials/ranking';
 
 @import
-  'components/alteraTamanhoFonte';
+  'components/alteraTamanhoFonte',
+  'components/lightbox';

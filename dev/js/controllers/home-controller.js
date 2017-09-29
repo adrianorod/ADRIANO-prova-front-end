@@ -10,11 +10,15 @@
     var vm = this;
 
     vm.simulado = [];
-    vm.itemSimuladoVisivel = "";
-    vm.nomeSimuladoAtivo = "";
-    vm.nomeProvaObjetivaFinal = "";
-    vm.rankingTotal = null;
+    $http.get('data/simulados.json')
+    .success(function(retorno) {
+      vm.simulado = retorno;
+    })
+    .error(function(erro) {
+      console.log(erro);
+    });
 
+    vm.itemSimuladoVisivel = "";
     vm.alteraSimuladoVisivel = alteraSimuladoVisivel;
     function alteraSimuladoVisivel(IdSimulado) {
       if(vm.itemSimuladoVisivel == IdSimulado) {
@@ -24,6 +28,8 @@
       }
     }
 
+    vm.nomeSimuladoAtivo = "";
+    vm.nomeProvaObjetivaFinal = "";
     vm.provaObjetivaFinal = provaObjetivaFinal;
     function provaObjetivaFinal(status, nomeSimulado) {
       vm.nomeSimuladoAtivo = nomeSimulado;
@@ -34,14 +40,7 @@
       }
     }
 
-    $http.get('data/simulados.json')
-    .success(function(retorno) {
-      vm.simulado = retorno;
-    })
-    .error(function(erro) {
-      console.log(erro);
-    });
-
+    vm.rankingTotal = null;
     vm.gerarRanking = gerarRanking;
     function gerarRanking() {
       $http.get('data/resultados.json')
@@ -52,6 +51,20 @@
         console.log(erro);
       });
     }
+
+    vm.subirPagina = subirPagina;
+    function subirPagina() {
+      window.scrollTo(0, 0);
+    }
+
+    vm.visualizarImpressao = false;
+    vm.imprimir = imprimir;
+    function imprimir() {
+      window.print();
+      vm.visualizarImpressao = false;
+    }
+
+    vm.enviarParaUmAmigo = false;
 
   }
 })();

@@ -1,0 +1,22 @@
+<table id="ranking">
+  <thead>
+    <tr>
+      <th>Posição</th>
+      <th>Nota</th>
+      <th>Matrícula</th>
+      <th>Especialidade</th>
+      <th>Turma</th>
+      <th>Filial</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="r in vm.rankingTotal | filter:vm.filtrarEspecialidade | filter:vm.filtrarTurma | filter:vm.filtrarFilial | orderBy:'-Nota'">
+      <td>1°</td>
+      <td>{{r.Nota}}</td>
+      <td>{{r.Matricula}}</td>
+      <td>{{r.Especialidade}}</td>
+      <td>{{r.Turma}}</td>
+      <td>{{r.Filial}}</td>
+    </tr>
+  </tbody>
+</table>
