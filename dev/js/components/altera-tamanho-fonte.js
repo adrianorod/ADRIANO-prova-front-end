@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-//  var btnAumentar = $(".aumentaFonte");
-//  var btnDiminuir = $(".diminuiFonte");
+  var btnAumentar = $(".aumentaFonte");
+  var btnDiminuir = $(".diminuiFonte");
   var elemento = $("body #container").find("*");
   var fonts = [];
 
@@ -13,20 +13,6 @@ $(document).ready(function() {
 
   obterTamanhoFonte();
 
-  function aumentarFonte() {
-    for (var i = 0; i < elemento.length; i++) {
-      ++fonts[i];
-      elemento.eq(i).css('font-size', fonts[i]);
-    }
-  }
-
-  function diminuirFonte() {
-    for (var i = 0; i < elemento.length; i++) {
-      --fonts[i];
-      elemento.eq(i).css('font-size', fonts[i]);
-    }
-  }
-/*
   btnAumentar.on('click', function() {
     for (var i = 0; i < elemento.length; i++) {
       ++fonts[i];
@@ -40,5 +26,5 @@ $(document).ready(function() {
       elemento.eq(i).css('font-size', fonts[i]);
     }
   });
-*/
+
 });
